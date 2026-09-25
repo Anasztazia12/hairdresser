@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5f1">
+<meta name="description" content="Cuts, colour and styling at Anne Hair Studio, an independent hair salon in Bath.">
+<title>Anne Hair Studio</title>
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f1;
+  --surface:#ffffff;
+  --peach:#f5cfb6;
+  --beige:#eadfc4;
+  --pink:#f2d5cd;
+  --brown:#6b4226;
+  --brown-deep:#3b2417;
+  --text:#1d1d1b;
+  --soft:#6e6c67;
+  --line:#e6e2da;
+  --r:18px;
+  --script:"Parisienne",cursive;
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='74' height='12' viewBox='0 0 74 12'%3E%3Cpath d='M2 6c5.5-5 11-5 17.5 0s12 5 17.5 0 11-5 17.5 0 12 5 17.5 0' fill='none' stroke='%236b4226' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:"Geist",system-ui,sans-serif;font-size:16px;line-height:1.6;background:var(--bg);color:var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:0}
+h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+h2::after{content:"";display:block;width:74px;height:12px;margin-top:16px;background:var(--wave) no-repeat}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.muted{color:var(--soft)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;font-weight:500;font-size:.95rem;-webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s,transform .1s}
+.btn-primary{background:var(--brown);color:#fff}
+.btn-primary:hover{background:#53321c}
+.btn-primary:active{background:var(--brown-deep)}
+.btn-outline{border:1px solid #cfcac0;background:var(--surface)}
+.btn-outline:hover{border-color:var(--text)}
+.btn-outline:active{background:#efebe4;border-color:var(--text)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,.toggle:focus-visible,.menu a:focus-visible,.contacts a:focus-visible,.logo:focus-visible{outline:2px solid var(--brown);outline-offset:3px}
+
+/* header */
+.head{position:sticky;top:0;z-index:30;background:rgba(247,245,241,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.head.scrolled{border-bottom-color:var(--line)}
+.head .wrap{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;border-radius:6px}
+.logo img{width:30px;height:30px}
+.logo b{font-family:var(--script);font-weight:400;font-size:2.1rem;line-height:1;color:var(--brown);letter-spacing:0}
+.logo small{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-top:8px}
+.menu{display:flex;align-items:center;gap:30px;font-size:.95rem}
+.menu a:not(.btn){position:relative;color:var(--soft);transition:color .15s}
+.menu a:not(.btn):hover,.menu a:not(.btn).active{color:var(--text)}
+.menu a:not(.btn).active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--brown)}
+.menu .btn{height:42px;color:#fff}
+.toggle{display:none;border:1px solid var(--line);background:var(--surface);border-radius:10px;height:42px;padding:0 16px;font:inherit;font-weight:500;cursor:pointer;transition:background .15s,transform .1s}
+.toggle:active{transform:scale(.96)}
+.toggle[aria-expanded="true"]{background:var(--text);color:#fff;border-color:var(--text)}
+
+/* hero */
+.hero{padding:48px 0 110px;background:linear-gradient(90deg,rgba(247,245,241,.94),rgba(247,245,241,.86) 45%,rgba(247,245,241,.35)),url("assets/images/web/background.jpg") center/cover}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--soft);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 12px;margin-bottom:28px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#6fa86f}
+.hero h1{font-size:clamp(2.6rem,5vw,4.3rem)}
+.hero h1 .script{display:block;font-family:var(--script);font-weight:400;color:var(--brown);font-size:1.1em;letter-spacing:0;line-height:1.2}
+.hero p{font-size:1.12rem;color:var(--soft);max-width:440px;margin:22px 0 34px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.facts{display:flex;gap:36px;margin-top:48px;font-size:.92rem}
+.facts b{display:block;font-weight:500;font-size:1rem}
+
+.hero-visual{position:relative;margin:0 20px 0 30px}
+.hero-visual::before{content:"";position:absolute;inset:60px -34px -34px 70px;background:var(--peach);border-radius:62% 38% 46% 54% / 48% 40% 60% 52%}
+.hero-visual::after{content:"";position:absolute;inset:-16px 16px 16px -16px;border:1.5px solid var(--brown);border-radius:400px 400px 26px 26px;pointer-events:none}
+.hero-img{position:relative;z-index:1;height:clamp(440px,calc(100svh - 160px),600px);border-radius:400px 400px 26px 26px;overflow:hidden;background:var(--beige)}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:62% center}
+.hero-circle{position:absolute;z-index:2;left:-56px;bottom:56px;width:150px;height:150px;border-radius:50%;overflow:hidden;border:6px solid var(--bg);box-shadow:0 20px 40px -18px rgba(59,36,23,.5)}
+.hero-circle img{width:100%;height:100%;object-fit:cover}
+.hero-note{position:absolute;z-index:2;right:-10px;top:46%;background:var(--surface);border-radius:14px;padding:12px 16px;box-shadow:0 20px 40px -20px rgba(59,36,23,.45);font-size:.85rem;line-height:1.35}
+.hero-note b{display:block;font-weight:600;font-size:.95rem}
+
+/* services */
+.services{padding:110px 0;background:var(--surface)}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px}
+.head-row p{margin:0;max-width:380px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card-media{position:relative;border-radius:22px;padding:28px 28px 0;background:var(--peach);overflow:hidden;margin-bottom:22px}
+.card:nth-child(2) .card-media{background:var(--beige)}
+.card:nth-child(3) .card-media{background:var(--pink)}
+.card-media::before{content:"";position:absolute;left:-20%;right:-20%;top:38%;height:120px;background:var(--wave) repeat-x;background-size:74px 12px;opacity:.35;transform:rotate(-8deg)}
+.card-media img{position:relative;width:100%;aspect-ratio:1/1.1;object-fit:cover;border-radius:300px 300px 0 0;transition:transform .4s}
+.card:hover .card-media img{transform:translateY(-6px)}
+.card-media .price{position:absolute;z-index:1;top:16px;right:16px;background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:500}
+.card h3{font-size:1.35rem;letter-spacing:-.02em}
+.card p{margin:8px 0 0;color:var(--soft)}
+
+/* about */
+.about{padding:120px 0}
+.about .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:96px;align-items:center}
+.about-img{position:relative;margin:30px 30px 0 30px}
+.about-img::before{content:"";position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:var(--beige);top:-30px;left:-30px}
+.about-img::after{content:"";position:absolute;inset:22px -22px -22px 22px;border:1.5px solid var(--brown);border-radius:26px 26px 220px 26px;pointer-events:none}
+.about-img img{position:relative;z-index:1;width:100%;aspect-ratio:4/4.7;object-fit:cover;object-position:68% center;border-radius:26px 26px 220px 26px}
+.about p{color:var(--soft);font-size:1.06rem;margin:20px 0 0;max-width:480px}
+.about ul{list-style:none;padding:0;margin:30px 0 0;border-top:1px solid var(--line)}
+.about li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+.about li span{color:var(--brown);min-width:24px;font-weight:500}
+.about .sign{font-family:var(--script);font-size:2.6rem;color:var(--brown);line-height:1;margin:26px 0 0}
+
+/* prices */
+.prices{padding:110px 0;background:linear-gradient(rgba(247,245,241,.55),rgba(247,245,241,.55)),url("assets/images/web/background.jpg") center/cover}
+.price-card{background:var(--surface);border-radius:28px;padding:60px;box-shadow:0 30px 60px -40px rgba(59,36,23,.35)}
+.price-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 72px}
+.group{margin-bottom:40px}
+.group:last-child{margin-bottom:0}
+.group h3{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--pink);border-radius:999px;padding:4px 12px;margin-bottom:8px}
+.price-cols > div:nth-child(2) .group h3{background:var(--peach)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px dashed #ddd5ca}
+.row small{display:block;color:var(--soft);font-size:.86rem}
+.row b{font-weight:500;white-space:nowrap}
+
+/* visit */
+.visit{padding:110px 0}
+.visit-box{position:relative;overflow:hidden;background:var(--brown-deep);color:#f7efe8;border-radius:28px;padding:68px;display:grid;grid-template-columns:1.1fr 1fr;gap:64px}
+.visit-box::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--brown);opacity:.55;left:-140px;bottom:-220px}
+.visit-box::after{content:"";position:absolute;left:0;right:0;top:48px;height:12px;background:var(--wave) repeat-x;background-size:74px 12px;opacity:.5;filter:brightness(2.4)}
+.visit-box > *{position:relative;z-index:1}
+.visit h2{margin-top:30px}
+.visit h2::after{filter:brightness(3)}
+.visit p{color:#d8c7b9;max-width:400px;margin:18px 0 30px}
+.visit .btn-primary{background:var(--peach);color:var(--brown-deep)}
+.visit .btn-primary:hover{background:#f8dcc9}
+.visit .btn-primary:active{background:#eab99a}
+.visit .btn-outline{background:transparent;border-color:rgba(247,239,232,.35);color:#f7efe8}
+.visit .btn-outline:hover{border-color:#f7efe8}
+.visit .btn-outline:active{background:rgba(255,255,255,.08)}
+.contacts{display:grid;gap:6px;margin-top:36px}
+.contacts div{display:flex;gap:16px;overflow-wrap:anywhere}
+.contacts span{color:#bba594;min-width:70px}
+.contacts a{text-decoration:underline;text-decoration-color:rgba(247,239,232,.3);text-underline-offset:3px}
+.contacts a:hover{text-decoration-color:currentColor}
+.hours{background:var(--surface);color:var(--text);border-radius:var(--r);padding:12px 26px;align-self:start;margin-top:30px}
+.hours div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.hours div:last-child{border:0}
+.hours .today{font-weight:600;color:var(--brown)}
+.hours .closed{color:var(--soft)}
+
+/* footer */
+.foot{padding:0 0 40px;font-size:.9rem;color:var(--soft)}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:24px}
+.foot .logo b{font-size:1.7rem}
+
+.book-bar{display:none}
+
+@media (max-width:1000px){
+  .hero .wrap{gap:56px}
+  .hero-note{display:none}
+  .about .wrap{gap:64px}
+  .price-card{padding:44px}
+}
+@media (max-width:900px){
+  .hero .wrap,.about .wrap,.visit-box,.price-cols{grid-template-columns:1fr;gap:48px}
+  .hero{padding:32px 0 80px;background:linear-gradient(rgba(247,245,241,.35),rgba(247,245,241,.9) 50%),url("assets/images/web/background.jpg") center/cover}
+  .hero-visual{order:-1;margin:16px 16px 20px 16px}
+  .hero-img{height:auto;aspect-ratio:1/1}
+  .hero-visual::before{inset:30% -16px -20px 20%}
+  .hero-visual::after{inset:-12px 12px 12px -12px}
+  .hero-circle{width:112px;height:112px;left:-14px;bottom:-24px;border-width:5px}
+  .cards{grid-template-columns:1fr 1fr}
+  .cards .card:last-child{grid-column:1/-1}
+  .cards .card:last-child .card-media img{aspect-ratio:16/10;border-radius:300px 300px 0 0}
+  .head-row{flex-direction:column;align-items:flex-start;gap:12px}
+  .services,.about,.prices,.visit{padding:80px 0}
+  .about-img{max-width:520px;margin:30px 22px 22px 30px}
+  .price-cols{gap:40px}
+  .visit-box{padding:48px 40px;gap:24px}
+  .toggle{display:block}
+  .menu{display:none;position:absolute;top:76px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 32px 24px;box-shadow:0 20px 30px -24px rgba(0,0,0,.25)}
+  .menu.open{display:flex}
+  .menu a:not(.btn){padding:14px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:1.05rem}
+  .menu a:not(.btn).active{font-weight:600}
+  .menu a:not(.btn).active::after{left:auto;right:0;top:50%;bottom:auto;width:8px;height:8px;border-radius:50%;transform:translateY(-50%)}
+  .menu .btn{margin-top:18px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px}
+  .menu{padding:8px 20px 24px}
+  .logo b{font-size:1.8rem}
+  .cards{grid-template-columns:1fr;gap:40px}
+  .cards .card:last-child .card-media img{aspect-ratio:1/1.1}
+  .facts{gap:24px;flex-wrap:wrap}
+  .about-img{margin:24px 18px 18px 24px}
+  .about-img::after{inset:16px -16px -16px 16px}
+  .price-card{padding:32px 22px;border-radius:22px}
+  .visit{padding:0 0 60px}
+  .visit .wrap{padding:0}
+  .visit-box{border-radius:0;padding:56px 20px}
+  .hours{padding:8px 20px}
+  .foot .wrap{flex-direction:column;align-items:flex-start;gap:6px}
+  body{padding-bottom:76px}
+  .book-bar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px;background:rgba(247,245,241,.96);border-top:1px solid var(--line)}
+  .book-bar .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<!-- Sample details: address, phone (fictional 01632 range), email, hours and prices — replace with real ones before publishing. -->
+
+<header class="head" id="head">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Anne Hair Studio — home"><img src="assets/images/logo.svg" alt=""><b>Anne</b><small>Hair Studio</small></a>
+    <button class="toggle" id="toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#prices">Prices</a>
+      <a href="#visit">Contact</a>
+      <a class="btn btn-primary" href="#visit">Book appointment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="status">Taking bookings this week</span>
+        <h1>Your hair,<span class="script">done properly.</span></h1>
+        <p>A small, independent studio in Bath for cuts, colour and styling. Unhurried appointments and honest advice.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#visit">Book appointment</a>
+          <a class="btn btn-outline" href="#prices">See prices</a>
+        </div>
+        <div class="facts">
+          <div><b>Tue – Sat</b><span class="muted">Late opening Thu</span></div>
+          <div><b>Free consultation</b><span class="muted">Before any colour</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img">
+          <img src="assets/images/web/hairdresser6.jpg" alt="Blow-drying blonde hair with a round brush">
+        </div>
+        <div class="hero-circle">
+          <img src="assets/images/web/hairdresser5.jpg" alt="Foil highlights being applied">
+        </div>
+        <div class="hero-note"><b>Blow-dry</b><span class="muted">from £30</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="head-row">
+        <h2>What we do</h2>
+        <p class="muted">Not sure what to book? Tell us what you have in mind and we'll suggest the right appointment.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-media">
+            <span class="price">from £45</span>
+            <img src="assets/images/web/hairdresser3.jpg" alt="Styling a bob with a round brush" loading="lazy">
+          </div>
+          <h3>Cut &amp; finish</h3>
+          <p>A shape that suits you and is easy to live with day to day.</p>
+        </article>
+        <article class="card">
+          <div class="card-media">
+            <span class="price">from £55</span>
+            <img src="assets/images/web/hairdresser5.jpg" alt="Foil highlights being applied" loading="lazy">
+          </div>
+          <h3>Colour</h3>
+          <p>From a subtle gloss to full highlights or a complete change.</p>
+        </article>
+        <article class="card">
+          <div class="card-media">
+            <span class="price">from £30</span>
+            <img src="assets/images/web/hairdresser4.jpg" alt="Blow-drying long hair" loading="lazy">
+          </div>
+          <h3>Styling</h3>
+          <p>Blow-dries and occasion hair — or simply a treat for yourself.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-img">
+        <img src="assets/images/web/hairdresser2.jpg" alt="Anne cutting a client's hair in the studio" loading="lazy">
+      </div>
+      <div>
+        <h2>One chair at a time.</h2>
+        <p>Hi, I'm Anne. My studio is small on purpose — you won't be rushed or passed between people. Every appointment starts with a proper chat about your hair, your routine and the look you want.</p>
+        <ul>
+          <li><span>01</span>Consultation before every service</li>
+          <li><span>02</span>Professional, gentle products</li>
+          <li><span>03</span>Aftercare tips so it looks good at home too</li>
+        </ul>
+        <p class="sign">Anne</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="prices" id="prices">
+    <div class="wrap">
+      <div class="price-card">
+        <div class="head-row">
+          <h2>Prices</h2>
+          <p class="muted">Prices depend on hair length and thickness — we'll confirm yours before we start.</p>
+        </div>
+        <div class="price-cols">
+          <div>
+            <div class="group">
+              <h3>Cuts</h3>
+              <div class="row"><span>Cut &amp; blow-dry<small>Wash, cut and finish</small></span><b>from £45</b></div>
+              <div class="row"><span>Short hair cut</span><b>from £30</b></div>
+              <div class="row"><span>Fringe trim</span><b>£10</b></div>
+            </div>
+            <div class="group">
+              <h3>Styling</h3>
+              <div class="row"><span>Blow-dry</span><b>from £30</b></div>
+              <div class="row"><span>Occasion hair<small>Updos, waves, events</small></span><b>from £55</b></div>
+            </div>
+          </div>
+          <div>
+            <div class="group">
+              <h3>Colour</h3>
+              <div class="row"><span>Root colour</span><b>from £55</b></div>
+              <div class="row"><span>Full head colour</span><b>from £70</b></div>
+              <div class="row"><span>Half head highlights</span><b>from £75</b></div>
+              <div class="row"><span>Full head highlights</span><b>from £95</b></div>
+              <div class="row"><span>Toner / gloss</span><b>from £25</b></div>
+              <div class="row"><span>Consultation &amp; patch test</span><b>Free</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="visit-box">
+        <div>
+          <h2>Book your visit</h2>
+          <p>Call or send a message with the service you'd like and a few times that suit you. We'll reply the same day.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="tel:+441632960482">Call the studio</a>
+            <a class="btn btn-outline" href="mailto:hello@annehairstudio.co.uk">Send an email</a>
+          </div>
+          <div class="contacts">
+            <div><span>Phone</span><a href="tel:+441632960482">01632 960 482</a></div>
+            <div><span>Email</span><a href="mailto:hello@annehairstudio.co.uk">hello@annehairstudio.co.uk</a></div>
+            <div><span>Address</span>14 Rosewood Lane, Bath BA1 2QT</div>
+          </div>
+        </div>
+        <div class="hours" id="hours" aria-label="Opening hours">
+          <div data-day="1"><span>Monday</span><span class="closed">Closed</span></div>
+          <div data-day="2"><span>Tuesday</span><span>9:00 – 18:00</span></div>
+          <div data-day="3"><span>Wednesday</span><span>9:00 – 18:00</span></div>
+          <div data-day="4"><span>Thursday</span><span>10:00 – 20:00</span></div>
+          <div data-day="5"><span>Friday</span><span>9:00 – 18:00</span></div>
+          <div data-day="6"><span>Saturday</span><span>9:00 – 15:00</span></div>
+          <div data-day="0"><span>Sunday</span><span class="closed">Closed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Back to top"><b>Anne</b><small>Hair Studio</small></a>
+    <span>14 Rosewood Lane, Bath BA1 2QT · 01632 960 482 · © <span id="year"></span></span>
+  </div>
+</footer>
+
+<div class="book-bar">
+  <a class="btn btn-outline" href="tel:+441632960482">Call</a>
+  <a class="btn btn-primary" href="#visit">Book appointment</a>
+</div>
+
+<script>
+const now = new Date();
+document.getElementById('year').textContent = now.getFullYear();
+const today = document.querySelector(`#hours [data-day="${now.getDay()}"]`);
+if (today) today.classList.add('today');
+
+const head = document.getElementById('head');
+addEventListener('scroll', () => head.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+const toggle = document.getElementById('toggle');
+const menu = document.getElementById('menu');
+function setMenu(open){
+  menu.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+// highlight the menu link of the section currently on screen
+const links = [...menu.querySelectorAll('a:not(.btn)')];
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  });
+}, {rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
