@@ -153,6 +153,65 @@ h2::after{content:"";display:block;width:74px;height:12px;margin-top:16px;backgr
 .hours .today{font-weight:600;color:var(--brown)}
 .hours .closed{color:var(--soft)}
 
+/* booking popup */
+.modal{width:min(560px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:24px;background:var(--surface);color:var(--text);box-shadow:0 40px 80px -30px rgba(59,36,23,.55);overflow:auto}
+.modal::backdrop{background:rgba(29,20,14,.45);backdrop-filter:blur(3px)}
+.modal[open]{animation:pop .22s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;background:var(--peach)}
+.modal-head h2{font-size:1.4rem}
+.modal-head h2::after{display:none}
+.x{width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.7);font-size:1.3rem;line-height:1;cursor:pointer;transition:background .15s,transform .1s}
+.x:hover{background:#fff}
+.x:active{transform:scale(.92)}
+.modal-body{padding:24px 26px 28px}
+.cal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cal-top b{font-weight:500;font-size:1.05rem}
+.nav-btn{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:1.1rem;cursor:pointer;transition:border-color .15s,transform .1s}
+.nav-btn:hover:not(:disabled){border-color:var(--text)}
+.nav-btn:active:not(:disabled){transform:scale(.94)}
+.nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .dow{font-size:.75rem;color:var(--soft);padding:4px 0 8px;text-transform:uppercase;letter-spacing:.06em}
+.cal button{aspect-ratio:1;border:0;border-radius:12px;background:transparent;font:inherit;font-size:.95rem;cursor:pointer;transition:background .15s,color .15s,transform .1s}
+.cal button:hover:not(:disabled){background:var(--bg)}
+.cal button:active:not(:disabled){transform:scale(.92)}
+.cal button:disabled{color:#c9c3ba;cursor:not-allowed}
+.cal button.today{box-shadow:inset 0 0 0 1px var(--brown)}
+.cal button.sel{background:var(--brown);color:#fff}
+.slots-label{font-size:.9rem;color:var(--soft);margin:22px 0 10px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.slots button{height:42px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font:inherit;font-weight:500;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.slots button:hover:not(:disabled){border-color:var(--brown)}
+.slots button:active:not(:disabled){transform:scale(.95)}
+.slots button:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.slots button.sel{background:var(--brown);border-color:var(--brown);color:#fff}
+.modal .btn:focus-visible,.cal button:focus-visible,.slots button:focus-visible,.nav-btn:focus-visible,.x:focus-visible{outline:2px solid var(--brown);outline-offset:2px}
+.confirm{width:100%;margin-top:24px;border:0;font:inherit;font-weight:600;cursor:pointer}
+.confirm:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.done{display:none;text-align:center;padding:12px 0 4px}
+.modal.is-done .picker{display:none}
+.modal.is-done .done{display:block}
+.details{display:none}
+.modal.is-details .picker{display:none}
+.modal.is-details .details{display:block}
+.chosen{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);border-radius:14px;padding:14px 16px;margin-bottom:20px}
+.chosen b{display:block;font-weight:500}
+.chosen span{font-size:.88rem;color:var(--soft)}
+.link-btn{border:0;background:none;font:inherit;font-size:.9rem;font-weight:500;color:var(--brown);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 0;white-space:nowrap}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.88rem;font-weight:500;margin-bottom:6px}
+.field input{width:100%;height:48px;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 14px;transition:border-color .15s,box-shadow .15s}
+.field input:focus{outline:0;border-color:var(--brown);box-shadow:0 0 0 3px rgba(107,66,38,.14)}
+.field.invalid input{border-color:#b3452f;background:#fdf5f3}
+.field .err{display:none;font-size:.82rem;color:#b3452f;margin-top:5px}
+.field.invalid .err{display:block}
+.details .confirm{margin-top:10px}
+.privacy{font-size:.8rem;color:var(--soft);text-align:center;margin:12px 0 0}
+.done .tick{width:64px;height:64px;border-radius:50%;background:var(--peach);color:var(--brown-deep);display:grid;place-items:center;margin:0 auto 16px;font-size:1.7rem}
+.done h3{font-size:1.4rem}
+.done p{color:var(--soft);margin:10px auto 22px;max-width:360px}
+
 /* footer */
 .foot{padding:0 0 40px;font-size:.9rem;color:var(--soft)}
 .foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding-top:24px}
@@ -227,7 +286,7 @@ h2::after{content:"";display:block;width:74px;height:12px;margin-top:16px;backgr
       <a href="#about">About</a>
       <a href="#prices">Prices</a>
       <a href="#visit">Contact</a>
-      <a class="btn btn-primary" href="#visit">Book appointment</a>
+      <a class="btn btn-primary" href="#visit" data-book>Book appointment</a>
     </nav>
   </div>
 </header>
@@ -241,7 +300,7 @@ h2::after{content:"";display:block;width:74px;height:12px;margin-top:16px;backgr
         <h1>Your hair,<span class="script">done properly.</span></h1>
         <p>A small, independent studio in Bath for cuts, colour and styling. Unhurried appointments and honest advice.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#visit">Book appointment</a>
+          <a class="btn btn-primary" href="#visit" data-book>Book appointment</a>
           <a class="btn btn-outline" href="#prices">See prices</a>
         </div>
         <div class="facts">
@@ -391,8 +450,57 @@ h2::after{content:"";display:block;width:74px;height:12px;margin-top:16px;backgr
 
 <div class="book-bar">
   <a class="btn btn-outline" href="tel:+441632960482">Call</a>
-  <a class="btn btn-primary" href="#visit">Book appointment</a>
+  <a class="btn btn-primary" href="#visit" data-book>Book appointment</a>
 </div>
+
+<dialog class="modal" id="bookModal" aria-labelledby="bookTitle">
+  <div class="modal-head">
+    <h2 id="bookTitle">Book an appointment</h2>
+    <button class="x" type="button" data-close aria-label="Close">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="picker">
+      <div class="cal-top">
+        <button class="nav-btn" type="button" id="prevMonth" aria-label="Previous month">‹</button>
+        <b id="monthLabel"></b>
+        <button class="nav-btn" type="button" id="nextMonth" aria-label="Next month">›</button>
+      </div>
+      <div class="cal" id="cal"></div>
+      <p class="slots-label" id="slotsLabel">Pick a day to see free times.</p>
+      <div class="slots" id="slots"></div>
+      <button class="btn btn-primary confirm" type="button" id="confirmBtn" disabled>Choose a day and time</button>
+    </div>
+    <form class="details" id="detailsForm" novalidate>
+      <div class="chosen">
+        <div><b id="chosenWhen"></b><span>Your appointment</span></div>
+        <button class="link-btn" type="button" id="backBtn">Change</button>
+      </div>
+      <div class="field">
+        <label for="fName">Full name</label>
+        <input id="fName" name="name" autocomplete="name" required>
+        <p class="err">Please enter your name.</p>
+      </div>
+      <div class="field">
+        <label for="fEmail">Email address</label>
+        <input id="fEmail" name="email" type="email" autocomplete="email" required>
+        <p class="err">Please enter a valid email address.</p>
+      </div>
+      <div class="field">
+        <label for="fPhone">Phone number</label>
+        <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+        <p class="err">Please enter a valid phone number.</p>
+      </div>
+      <button class="btn btn-primary confirm" type="submit">Confirm booking</button>
+      <p class="privacy">We'll only use your details to confirm this appointment.</p>
+    </form>
+    <div class="done" role="status">
+      <div class="tick" aria-hidden="true">✓</div>
+      <h3>See you soon!</h3>
+      <p id="doneText"></p>
+      <button class="btn btn-outline" type="button" data-close>Close</button>
+    </div>
+  </div>
+</dialog>
 
 <script>
 const now = new Date();
@@ -422,6 +530,122 @@ const spy = new IntersectionObserver(entries => {
   });
 }, {rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+
+// booking popup (demo only — nothing is sent)
+const modal = document.getElementById('bookModal');
+const calEl = document.getElementById('cal');
+const slotsEl = document.getElementById('slots');
+const slotsLabel = document.getElementById('slotsLabel');
+const monthLabel = document.getElementById('monthLabel');
+const prevBtn = document.getElementById('prevMonth');
+const confirmBtn = document.getElementById('confirmBtn');
+const OPEN = {2:[9,18], 3:[9,18], 4:[10,20], 5:[9,18], 6:[9,15]}; // day of week → opening hours
+const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+let view = new Date(now.getFullYear(), now.getMonth(), 1);
+let pickedDay = null, pickedTime = null;
+
+const fmtDay = d => d.toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'});
+// pseudo-random but stable "already booked" slots so the calendar looks realistic
+const isTaken = (d, t) => ((d.getDate() * 31 + d.getMonth() * 7 + t * 13) % 5) === 0;
+const slotFree = (d, h) => !(+d === +todayStart && h <= now.getHours()) && !isTaken(d, h);
+const hasFree = d => { const o = OPEN[d.getDay()]; if (!o) return false; for (let h = o[0]; h < o[1]; h++) if (slotFree(d, h)) return true; return false; };
+
+function renderCal(){
+  monthLabel.textContent = view.toLocaleDateString('en-GB', {month:'long', year:'numeric'});
+  prevBtn.disabled = view <= new Date(now.getFullYear(), now.getMonth(), 1);
+  calEl.innerHTML = ['Mo','Tu','We','Th','Fr','Sa','Su'].map(d => `<span class="dow">${d}</span>`).join('');
+  const offset = (view.getDay() + 6) % 7;
+  for (let i = 0; i < offset; i++) calEl.append(document.createElement('span'));
+  const days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+  for (let n = 1; n <= days; n++){
+    const d = new Date(view.getFullYear(), view.getMonth(), n);
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = n;
+    b.setAttribute('aria-label', fmtDay(d));
+    b.disabled = d < todayStart || !hasFree(d);
+    if (+d === +todayStart) b.classList.add('today');
+    if (pickedDay && +d === +pickedDay) b.classList.add('sel');
+    b.addEventListener('click', () => { pickedDay = d; pickedTime = null; renderCal(); renderSlots(); });
+    calEl.append(b);
+  }
+}
+
+function renderSlots(){
+  slotsEl.innerHTML = '';
+  if (!pickedDay){ slotsLabel.textContent = 'Pick a day to see free times.'; updateConfirm(); return; }
+  slotsLabel.textContent = `Free times on ${fmtDay(pickedDay)}`;
+  const [from, to] = OPEN[pickedDay.getDay()];
+  for (let h = from; h < to; h++){
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = `${h}:00`;
+    b.disabled = !slotFree(pickedDay, h);
+    if (pickedTime === h) b.classList.add('sel');
+    b.addEventListener('click', () => { pickedTime = h; renderSlots(); });
+    slotsEl.append(b);
+  }
+  updateConfirm();
+}
+
+function updateConfirm(){
+  const ready = pickedDay && pickedTime !== null;
+  confirmBtn.disabled = !ready;
+  confirmBtn.textContent = ready ? `Book ${pickedDay.toLocaleDateString('en-GB',{weekday:'short', day:'numeric', month:'short'})} at ${pickedTime}:00` : 'Choose a day and time';
+}
+
+prevBtn.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
+document.getElementById('nextMonth').addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
+const form = document.getElementById('detailsForm');
+const checks = {
+  fName: v => v.trim().length >= 2,
+  fEmail: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  fPhone: v => v.replace(/\D/g, '').length >= 9
+};
+function validate(id){
+  const input = document.getElementById(id);
+  const ok = checks[id](input.value);
+  input.closest('.field').classList.toggle('invalid', !ok);
+  input.setAttribute('aria-invalid', !ok);
+  return ok;
+}
+Object.keys(checks).forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener('blur', () => { if (input.value) validate(id); });
+  input.addEventListener('input', () => { if (input.closest('.field').classList.contains('invalid')) validate(id); });
+});
+
+confirmBtn.addEventListener('click', () => {
+  document.getElementById('chosenWhen').textContent = `${fmtDay(pickedDay)} · ${pickedTime}:00`;
+  modal.classList.add('is-details');
+  document.getElementById('fName').focus();
+});
+document.getElementById('backBtn').addEventListener('click', () => modal.classList.remove('is-details'));
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const bad = Object.keys(checks).filter(id => !validate(id));
+  if (bad.length){ document.getElementById(bad[0]).focus(); return; }
+  const name = document.getElementById('fName').value.trim().split(/\s+/)[0];
+  const email = document.getElementById('fEmail').value.trim();
+  document.getElementById('doneText').textContent = `Thanks, ${name}! Your appointment is booked for ${fmtDay(pickedDay)} at ${pickedTime}:00. A confirmation will be sent to ${email}. (This is a demo — no booking was sent.)`;
+  modal.classList.remove('is-details');
+  modal.classList.add('is-done');
+});
+
+function openBooking(e){
+  if (!modal.showModal) return; // very old browsers: fall back to the contact section link
+  e.preventDefault();
+  modal.classList.remove('is-done', 'is-details');
+  form.reset();
+  form.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+  pickedDay = null; pickedTime = null;
+  view = new Date(now.getFullYear(), now.getMonth(), 1);
+  renderCal(); renderSlots();
+  modal.showModal();
+}
+document.querySelectorAll('[data-book]').forEach(b => b.addEventListener('click', openBooking));
+modal.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => modal.close()));
+modal.addEventListener('click', e => { if (e.target === modal) modal.close(); }); // click on backdrop
 </script>
 </body>
 </html>
