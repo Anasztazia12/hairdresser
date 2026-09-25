@@ -627,7 +627,7 @@ form.addEventListener('submit', e => {
   if (bad.length){ document.getElementById(bad[0]).focus(); return; }
   const name = document.getElementById('fName').value.trim().split(/\s+/)[0];
   const email = document.getElementById('fEmail').value.trim();
-  document.getElementById('doneText').textContent = `Thanks, ${name}! Your appointment is booked for ${fmtDay(pickedDay)} at ${pickedTime}:00. A confirmation will be sent to ${email}. (This is a demo — no booking was sent.)`;
+  document.getElementById('doneText').textContent = `Thanks, ${name}! Your appointment is booked for ${fmtDay(pickedDay)} at ${pickedTime}:00. A confirmation will be sent to ${email}.`;
   modal.classList.remove('is-details');
   modal.classList.add('is-done');
 });
